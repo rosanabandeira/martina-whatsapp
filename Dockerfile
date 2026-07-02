@@ -6,4 +6,4 @@ RUN npm install --legacy-peer-deps
 RUN cp prisma/postgresql-schema.prisma prisma/schema.prisma && npx prisma generate
 RUN npm run build
 EXPOSE 8080
-CMD ["node", "dist/main.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main.js"]
